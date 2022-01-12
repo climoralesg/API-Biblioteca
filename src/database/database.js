@@ -1,5 +1,4 @@
 let mysql=require('mysql');
-
 require('dotenv').config();
 
 let connection=mysql.createConnection({
@@ -11,15 +10,13 @@ let connection=mysql.createConnection({
 })
 
 connection.connect(function(err){
-    
     if(err){
         console.log("Error",err);
         console.log("Fatal",err.fatal);
     }else{
-        console.log("Conectado");
+        console.log("Conectado, id de conexion", connection.threadId);
     }
     
 });
 
-
-//module.exports=connection;// revisar exportacion
+module.exports=connection;
