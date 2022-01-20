@@ -22,26 +22,43 @@ create table libros(
     
 );
 
-create table editoriales(
-    id int not null auto_increment,
-    nombre varchar(10),
-    url varchar(10),
-    PRIMARY KEY (id)
-);
-
 create table autores(
     id int not null auto_increment,
-    nombre varchar(10),
+    nombre varchar(30),
     PRIMARY KEY (id)
 );
 
+create table editoriales(
+    id int not null auto_increment,
+    nombre varchar(30),
+    url varchar(20),
+    PRIMARY KEY (id)
+);
 
 create table categorias(
     id int not null auto_increment,
-    nombre varchar(10),
+    nombre varchar(30),
     PRIMARY KEY (id)
 );
 
-alter table libros add foreign key (idEditorial) references editoriales(id);
-alter table libros add foreign key (idAutor) references autores(id);
-alter table libros add foreign key (idCategoria) references categorias(id);
+alter table libros add foreign key (idEditorial) references editoriales(id) on delete cascade;
+alter table libros add foreign key (idAutor) references autores(id) on delete cascade;
+alter table libros add foreign key (idCategoria) references categorias(id) on delete cascade;
+
+
+insert into autores (nombre) values('Pedro');
+insert into autores (nombre) values('Juan');
+insert into autores (nombre) values('Diego');
+
+insert into editoriales (nombre,url) values ('Chile Libros','www.chilelibros.cl');
+insert into editoriales (nombre, url) values('Libros Locos','www.libroloco.cl');
+
+insert into categorias (nombre) values ('Suspenso');
+insert into categorias (nombre) values ('Romantico');
+
+insert into libros (isbn,titulo,edicion,numeroPaginas,idAutor,idCategoria,idEditorial) 
+    values('AKSL14', 'Libro 1', 1, 250,1,1,1);
+
+
+insert into libros (isbn,titulo,edicion,numeroPaginas,idAutor,idCategoria,idEditorial) 
+    values('ACOQR6', 'Libro 2', 2, 260,1,2,2);
