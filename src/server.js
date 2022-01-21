@@ -1,13 +1,13 @@
-const indexRoutes=require('./routes/index.routes')
-const autoresRoutes=require('./routes/autores.routes');
-const categoriasRoutes=require('./routes/categorias.routes');
+const indexRoutes = require("./routes/index.routes");
+const autoresRoutes = require("./routes/autores.routes");
+const categoriasRoutes = require("./routes/categorias.routes");
+const editorialesRoutes = require("./routes/editoriales.routes");
 
+const express = require("express");
 
-const express=require('express');
+const app = express();
 
-const app=express();
-
-app.set('port',process.env.API_PORT || 4000);
+app.set("port", process.env.API_PORT || 4000);
 
 //Middlewares
 app.use(express.json());
@@ -15,6 +15,6 @@ app.use(express.json());
 app.use(indexRoutes);
 app.use(autoresRoutes);
 app.use(categoriasRoutes);
+app.use(editorialesRoutes);
 
-
-module.exports=app;
+module.exports = app;
