@@ -1,5 +1,7 @@
 const indexRoutes=require('./routes/index.routes')
 const autoresRoutes=require('./routes/autores.routes');
+const categoriasRoutes=require('./routes/categorias.routes');
+
 
 const express=require('express');
 
@@ -12,6 +14,7 @@ app.use(express.json());
 
 app.use(indexRoutes);
 app.use(autoresRoutes);
+app.use(categoriasRoutes);
 
 
 module.exports=app;
