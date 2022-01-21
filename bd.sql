@@ -58,7 +58,9 @@ insert into categorias (nombre) values ('Romantico');
 
 insert into libros (isbn,titulo,edicion,numeroPaginas,idAutor,idCategoria,idEditorial) 
     values('AKSL14', 'Libro 1', 1, 250,1,1,1);
-
+    
+    insert into libros (isbn,titulo,edicion,numeroPaginas,idAutor,idCategoria,idEditorial) 
+    values('IOER45', 'Libro 2', 1, 250,1,1,1);
 
 insert into libros (isbn,titulo,edicion,numeroPaginas,idAutor,idCategoria,idEditorial) 
     values('ACOQR6', 'Libro 2', 2, 260,1,2,2);

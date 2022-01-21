@@ -1,22 +1,13 @@
 let mysql=require('mysql');
 require('dotenv').config();
 
-let connection=mysql.createConnection({
+let connection=mysql.createPool({
+    connectionLimit : 15,
     host:process.env.DB_HOST,
     user:process.env.DB_USER,
     password:process.env.DB_USER_PASSWORD,
     database:process.env.DB_NAME,
-    port : 3306
+    port : process.env.DB_PORT
 })
-
-connection.connect(function(err){
-    if(err){
-        console.log("Error",err);
-        console.log("Fatal",err.fatal);
-    }else{
-        console.log("Conectado, id de conexion", connection.threadId);
-    }
-    
-});
 
 module.exports=connection;

@@ -1,4 +1,3 @@
-const connect=require('./src/database/database.js');
 const app = require('./src/server.js');
 
 async function main(){
