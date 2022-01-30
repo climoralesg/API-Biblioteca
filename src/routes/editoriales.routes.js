@@ -24,7 +24,7 @@ router.get('/editoriales',(req, res)=>{
     });
 });
 
-//Registrar una Categoria
+//Registrar una editorial
 router.post('/editoriales',(req, res)=>{
     connection.query( `insert into editoriales (nombre,url) values ('${req.body.nombre}','${req.body.url}') `,function(error,result,fields){
         if (error){
