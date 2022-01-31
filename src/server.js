@@ -2,6 +2,7 @@ const indexRoutes = require("./routes/index.routes");
 const autoresRoutes = require("./routes/autores.routes");
 const categoriasRoutes = require("./routes/categorias.routes");
 const editorialesRoutes = require("./routes/editoriales.routes");
+const librosRoutes = require("./routes/libros.routes");
 
 const express = require("express");
 
@@ -16,5 +17,6 @@ app.use(indexRoutes);
 app.use(autoresRoutes);
 app.use(categoriasRoutes);
 app.use(editorialesRoutes);
+app.use(librosRoutes);
 
 module.exports = app;
