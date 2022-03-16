@@ -5,8 +5,8 @@ const connection=require('../database/database.js');
 const router=express.Router();
 
 //Consulta por todas las categorias
-router.get('/categorias',(req, res)=>{
-    connection.query("select * from categorias",function(error,result,fields){
+router.get('/categories',(req, res)=>{
+    connection.query("select * from categories",function(error,result,fields){
 
         if (error){
             throw error;
@@ -23,8 +23,8 @@ router.get('/categorias',(req, res)=>{
 });
 
 //Registrar una Categoria
-router.post('/categorias',(req, res)=>{
-    connection.query( `insert into categorias (nombre) values ('${req.body.nombre}') `,function(error,result,fields){
+router.post('/categories',(req, res)=>{
+    connection.query( `insert into categories (name) values ('${req.body.name}') `,function(error,result,fields){
         if (error){
             throw error;
         }else{
@@ -39,8 +39,8 @@ router.post('/categorias',(req, res)=>{
 });
 
 //Consultar una categoria a traves de su ID
-router.get('/categorias/:id',(req, res)=>{
-    connection.query(`select * from categorias where id='${req.params.id}'`,function(error,result,fields){
+router.get('/categories/:id',(req, res)=>{
+    connection.query(`select * from categories where id='${req.params.id}'`,function(error,result,fields){
         if (error){
             throw error;
         }else{
@@ -56,19 +56,37 @@ router.get('/categorias/:id',(req, res)=>{
 });
 
 //Elimina una Categoria
-router.delete('/categorias/:id',(req,res)=>{
-    connection.query(`delete from categorias where id='${req.params.id}'`,function(error,result,fields){
+router.delete('/categories/:id',(req,res)=>{
+    connection.query(`delete from categories where id='${req.params.id}'`,function(error,result,fields){
         if (error){
             throw error;
         }else{
             respuesta={
                 error:false,
                 codigo: 200,
-                mensaje: "Categoria Eliminado"
+                mensaje: "Categoria Eliminada"
             }
             res.json(respuesta);
         }    
     });
 });
+
+/*Editar un autor */
+router.put(`/categories/:id`,(req,res)=>{
+    connection.query(`UPDATE categories set name='${req.body.name}'`,function(error,result,fields){
+        if (error){
+            throw error;
+        }else{
+            respuesta={
+                error:false,
+                codigo: 200,
+                mensaje: "Categoria Editada"
+            }
+            res.json(respuesta);
+        } 
+    });
+});
+
+
 
 module.exports=router;
