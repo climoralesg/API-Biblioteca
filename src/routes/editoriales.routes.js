@@ -7,8 +7,8 @@ const router=express.Router();
 
 
 //Consulta por todas las editoriales
-router.get('/editoriales',(req, res)=>{
-    connection.query("select * from editoriales",function(error,result,fields){
+router.get('/editorials',(req, res)=>{
+    connection.query("select * from editorials",function(error,result,fields){
 
         if (error){
             throw error;
@@ -25,8 +25,8 @@ router.get('/editoriales',(req, res)=>{
 });
 
 //Registrar una editorial
-router.post('/editoriales',(req, res)=>{
-    connection.query( `insert into editoriales (nombre,url) values ('${req.body.nombre}','${req.body.url}') `,function(error,result,fields){
+router.post('/editorials',(req, res)=>{
+    connection.query( `insert into editorials (nombre,url) values ('${req.body.nombre}','${req.body.url}') `,function(error,result,fields){
         if (error){
             throw error;
         }else{
@@ -41,8 +41,8 @@ router.post('/editoriales',(req, res)=>{
 });
 
 //Consultar una editorial a traves de su ID
-router.get('/editoriales/:id',(req, res)=>{
-    connection.query(`select * from editoriales where id='${req.params.id}'`,function(error,result,fields){
+router.get('/editorials/:id',(req, res)=>{
+    connection.query(`select * from editorials where id='${req.params.id}'`,function(error,result,fields){
         if (error){
             throw error;
         }else{
@@ -58,8 +58,8 @@ router.get('/editoriales/:id',(req, res)=>{
 });
 
 //Elimina una editorial
-router.delete('/editoriales/:id',(req,res)=>{
-    connection.query(`delete from editoriales where id='${req.params.id}'`,function(error,result,fields){
+router.delete('/editorials/:id',(req,res)=>{
+    connection.query(`delete from editorials where id='${req.params.id}'`,function(error,result,fields){
         if (error){
             throw error;
         }else{
@@ -72,5 +72,23 @@ router.delete('/editoriales/:id',(req,res)=>{
         }    
     });
 });
+
+//Editar una editorial
+router.put('/editorials/:id',(req,res)=>{
+    connection.query(`update editorials set name=${req.params.name} where id=${req.params.name}`,function(error,result,fields){
+        if (error){
+            throw error;
+        }else{
+            respuesta={
+                error:false,
+                codigo: 200,
+                mensaje: "Editorial modificada"
+            }
+            res.json(respuesta);
+        }    
+    })
+})
+
+
 
 module.exports=router;

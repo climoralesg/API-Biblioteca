@@ -71,7 +71,7 @@ router.delete('/categories/:id',(req,res)=>{
     });
 });
 
-/*Editar un autor */
+/*Editar una categoria*/
 router.put(`/categories/:id`,(req,res)=>{
     connection.query(`UPDATE categories set name='${req.body.name}'`,function(error,result,fields){
         if (error){

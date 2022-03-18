@@ -71,4 +71,21 @@ router.delete('/libros/:isbn',(req,res)=>{
     })
 })
 
+//Editar un Libro
+router.put('/books/:id',(req,res)=>{
+    connection.query(`update books set name=${req.params.title},edition=${req.params.edition},numberPages=${req.params.numberPages} where isbn=${req.params.isbn}`,function(error,result,fields){
+        if (error){
+            throw error;
+        }else{
+            respuesta={
+                error:false,
+                codigo: 200,
+                mensaje: "Editorial modificada"
+            }
+            res.json(respuesta);
+        }    
+    })
+})
+
+
 module.exports=router;
