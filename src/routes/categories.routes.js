@@ -61,12 +61,19 @@ router.delete('/categories/:id',(req,res)=>{
         if (error){
             throw error;
         }else{
-            respuesta={
-                error:false,
-                codigo: 200,
-                mensaje: "Categoria Eliminada"
-            }
-            res.json(respuesta);
+            connection.query("select * from categories",function(error,result,fields){
+                if (error){
+                    throw error;
+                }else{
+                    respuesta={
+                        error:false,
+                        codigo: 200,
+                        mensaje: "Categoria Eliminada",    
+                        datos: result
+                    }
+                    res.json(respuesta);
+                }         
+            });
         }    
     });
 });

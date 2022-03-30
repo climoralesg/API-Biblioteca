@@ -63,12 +63,19 @@ router.delete('/editorials/:id',(req,res)=>{
         if (error){
             throw error;
         }else{
-            respuesta={
-                error:false,
-                codigo: 200,
-                mensaje: "Editorial Eliminada"
-            }
-            res.json(respuesta);
+            connection.query("select * from editorials",function(error,result,fields){
+                if (error){
+                    throw error;
+                }else{
+                    respuesta={
+                        error:false,
+                        codigo: 200,
+                        mensaje: "Editorial Eliminada",    
+                        datos: result
+                    }
+                    res.json(respuesta);
+                }         
+            });
         }    
     });
 });

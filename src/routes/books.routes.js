@@ -61,12 +61,19 @@ router.delete('/books/:isbn',(req,res)=>{
         if (error){
             throw error;
         }else{
-            respuesta={
-                error:false,
-                codigo: 200,
-                mensaje: "Libro Eliminado"
-            }
-            res.json(respuesta);
+            connection.query("select * from books",function(error,result,fields){
+                if (error){
+                    throw error;
+                }else{
+                    respuesta={
+                        error:false,
+                        codigo: 200,
+                        mensaje: "Libro Eliminado",    
+                        datos: result
+                    }
+                    res.json(respuesta);
+                }         
+            });
         }    
     })
 })
