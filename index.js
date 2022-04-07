@@ -7,7 +7,6 @@ async function main(){
     console.log('Autor: climoralesg');
     console.log('Correo: climoralesg@gmail.com');
 
-    console.log('Servidor en puerto ', app.get('port'));
 }
 
 main();
