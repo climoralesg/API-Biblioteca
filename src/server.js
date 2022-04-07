@@ -11,7 +11,7 @@ const app = express();
 
 app.use(cors());
 
-app.set("port", process.env.API_PORT || 4000);
+app.listen(process.env.API_PORT || 4000);
 
 //Middlewares
 app.use(express.json());
