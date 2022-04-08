@@ -11,9 +11,10 @@ const app = express();
 
 app.use(cors());
 
-app.set("port", process.env.API_PORT || 4000);
+let port= process.env.API_PORT || 4000;
+//app.set("port", process.env.API_PORT || 4000);
 
-//app.listen(4000);
+app.listen(port);
 
 //Middlewares
 app.use(express.json());
